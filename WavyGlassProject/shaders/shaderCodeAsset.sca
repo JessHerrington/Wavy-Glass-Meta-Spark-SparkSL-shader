@@ -1,0 +1,50 @@
+precision highp float;
+
+using namespace std;
+
+void main(Texture2d tex, 
+          float reflectionIntensity,
+          float refractionIntensity,
+          float chromaticAberrationAmount,
+          float vertexDisplacementAmount, 
+          out vec4 Position, out vec4 Color) {
+  
+  float time = getTime();
+  
+  // Get the worldspace normal
+  vec3 N = normalize(getNormalMatrix() * getVertexNormal());
+  
+  vec4 position = getVertexPosition();
+
+  // Vertex displacement part
+  vec3 time3 = vec3(time, time*1.0, time*2.0);
+  vec3 freq = vec3(10.0, 15.0, 5.0);
+  position.xyz += N * sin(position.yzx * freq + time3) * vertexDisplacementAmount;
+  Position = getModelViewProjectionMatrix() * position;
+
+  // Glass shader part
+  vec2 uv = fragment(Position.xy) / Position.w;
+  uv = uv * 0.5 + 0.5;
+  uv.y = 1.0 - uv.y;
+
+  float eta = 1.04 * refractionIntensity;
+  
+  // Chromatic aberration part - can adjust the specified values here
+  vec2 distortionR = fragment(refract(vec3(0.0, 0.0, -1.0 * chromaticAberrationAmount), N, eta).xy);
+  vec2 distortionG = fragment(refract(vec3(0.0, 0.0, -2.0 * chromaticAberrationAmount), N, eta + 0.005).xy);
+  vec2 distortionB = fragment(refract(vec3(0.0, 0.0, -3.0 * chromaticAberrationAmount), N, eta + 0.01).xy);
+
+  vec4 colR = tex.sample(uv + distortionR);
+  vec4 colG = tex.sample(uv + distortionG);
+  vec4 colB = tex.sample(uv + distortionB);
+  
+  vec4 refractedColor = vec4(colR.r, colG.g, colB.b, 1.0);
+  
+  // Reflection part
+  vec3 R = reflect(vec3(0.0, 0.0, -1.0), N);
+  vec4 reflectedColor = tex.sample(fragment(R.xy));
+  
+  // Mix the reflected and refracted colors based on the reflection intensity
+  Color = mix(refractedColor, reflectedColor, reflectionIntensity);
+}
+

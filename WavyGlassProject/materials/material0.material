@@ -1,0 +1,105 @@
+{
+  "modelName": "shader_code_asset_material_model",
+  "name": "material0",
+  "identifier": "shader_code_asset_material_model:501229-38daf309-a5f3-4244-b309-a083e1ce3d62",
+  "alphaTestEnabled": false,
+  "alphaTestThreshold": 0,
+  "blendMode": "alpha",
+  "cullMode": "back",
+  "diffuseFactor": "0xffffffff",
+  "diffuseTextureTransform": {
+    "offsetU": 0,
+    "offsetV": 0,
+    "rotation": 0,
+    "scaleU": 1,
+    "scaleV": 1
+  },
+  "doubleSided": false,
+  "fragmentOutputCount": 1,
+  "importIssues": {},
+  "isDiffuseTextureIdentifierEnabled": false,
+  "readDepth": true,
+  "shader": "shader_interface_model:501215-38daf309-a5f3-4244-b309-a083e1ce3d62",
+  "transparency": 1,
+  "writeDepth": true,
+  "writesToColorBufferAlpha": true,
+  "writesToColorBufferBlue": true,
+  "writesToColorBufferGreen": true,
+  "writesToColorBufferRed": true,
+  "children": [
+    {
+      "modelName": "composed_material_parameters_model",
+      "identifier": "composed_material_parameters_model:501231-38daf309-a5f3-4244-b309-a083e1ce3d62",
+      "children": [
+        {
+          "modelName": "composed_material_parameter_model",
+          "name": "tex",
+          "identifier": "composed_material_parameter_model:501457-38daf309-a5f3-4244-b309-a083e1ce3d62",
+          "hasTextureParameters": false,
+          "isTextureIdentifierEnabled": false,
+          "textureFilter": "bilinear",
+          "textureIdentifier": "cameraTexture:501689-38daf309-a5f3-4244-b309-a083e1ce3d62",
+          "textureWrapModeU": "repeat",
+          "textureWrapModeV": "repeat",
+          "type": "texture"
+        },
+        {
+          "modelName": "composed_material_parameter_model",
+          "name": "reflectionIntensity",
+          "identifier": "composed_material_parameter_model:501459-38daf309-a5f3-4244-b309-a083e1ce3d62",
+          "hasTextureParameters": false,
+          "isTextureIdentifierEnabled": false,
+          "rawValue": [
+            0.5
+          ],
+          "textureFilter": "bilinear",
+          "textureWrapModeU": "repeat",
+          "textureWrapModeV": "repeat",
+          "type": "float"
+        },
+        {
+          "modelName": "composed_material_parameter_model",
+          "name": "refractionIntensity",
+          "identifier": "composed_material_parameter_model:501461-38daf309-a5f3-4244-b309-a083e1ce3d62",
+          "hasTextureParameters": false,
+          "isTextureIdentifierEnabled": false,
+          "rawValue": [
+            0.5
+          ],
+          "textureFilter": "bilinear",
+          "textureWrapModeU": "repeat",
+          "textureWrapModeV": "repeat",
+          "type": "float"
+        },
+        {
+          "modelName": "composed_material_parameter_model",
+          "name": "chromaticAberrationAmount",
+          "identifier": "composed_material_parameter_model:501463-38daf309-a5f3-4244-b309-a083e1ce3d62",
+          "hasTextureParameters": false,
+          "isTextureIdentifierEnabled": false,
+          "rawValue": [
+            0.5
+          ],
+          "textureFilter": "bilinear",
+          "textureWrapModeU": "repeat",
+          "textureWrapModeV": "repeat",
+          "type": "float"
+        },
+        {
+          "modelName": "composed_material_parameter_model",
+          "name": "vertexDisplacementAmount",
+          "identifier": "composed_material_parameter_model:501465-38daf309-a5f3-4244-b309-a083e1ce3d62",
+          "hasTextureParameters": false,
+          "isTextureIdentifierEnabled": false,
+          "rawValue": [
+            0.009
+          ],
+          "textureFilter": "bilinear",
+          "textureWrapModeU": "repeat",
+          "textureWrapModeV": "repeat",
+          "type": "float"
+        }
+      ]
+    }
+  ]
+}
